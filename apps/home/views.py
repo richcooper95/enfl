@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -9,14 +10,14 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {})
 
-class HallOfFameView(TemplateView):
+class HallOfFameView(LoginRequiredMixin, TemplateView):
     """Hall of fame view."""
     template_name = "hall_of_fame.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {})
 
-class PositionsView(TemplateView):
+class PositionsView(LoginRequiredMixin, TemplateView):
     """Positions view."""
     template_name = "positions.html"
 
