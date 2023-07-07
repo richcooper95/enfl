@@ -16,7 +16,7 @@ $(document).ready(function(){
         if (pos != '' && club != '') {
             $.ajax({
                 url: '/getplayers.json',
-                data: 'unowned=1&pos=' + pos + '&club=' + club, 
+                data: 'unowned=1&pos=' + pos + '&club=' + club,
                 dataType: 'json',
                 success: function(data) {
                     var listItems= "<option></option>";
@@ -46,21 +46,3 @@ $(document).ready(function(){
     // Start by updating the player list on page load
     updatePlayerList();
 });
-
-
-//  $.ajax({ // ajax call starts
-//      url: '/getplayers.json', // JQuery loads serverside.php
-//      data: 'club=' + "ARS", // Send value of the clicked button
-//      dataType: 'json', // Choosing a JSON datatype
-//      success: function(data) // Variable data contains the data we get from serverside
-//      {
-//          $('#names').html(''); // Clear #names div
-//          console.log($'#pos option:selected').text();
-//          for (var i in data) {
-//              $('#test').append('player: ' + data[i] + '<br/>');
-//          }
-//      }
-//  });
-
-
-
