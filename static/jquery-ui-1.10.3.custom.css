@@ -39,7 +39,7 @@
 	clear: both;
 }
 .ui-helper-clearfix {
-	min-height: 0; /* support: IE7 */
+	height: 35px; /* support: IE7 */
 }
 .ui-helper-zfix {
 	width: 100%;
@@ -555,16 +555,16 @@ button.ui-button::-moz-focus-inner {
 	padding: 2px .4em;
 	line-height: 1.5;
 	min-height: 0; /* support: IE7 */
-	font-weight: lighter;
+	font-weight: 300;
 }
 .ui-menu .ui-menu-item a.ui-state-focus,
 .ui-menu .ui-menu-item a.ui-state-active {
-	font-weight: normal;
+	font-weight: 500;
 	margin: -1px;
 }
 
 .ui-menu .ui-state-disabled {
-	font-weight: lighter;
+	font-weight: 300;
 	margin: .4em 0 .2em;
 	line-height: 1.5;
 }
@@ -752,6 +752,9 @@ button.ui-button::-moz-focus-inner {
 	padding: .5em 1em;
 	text-decoration: none;
 }
+.ui-tabs .ui-tabs-anchor {
+	height: 14px;
+}
 .ui-tabs .ui-tabs-nav li.ui-tabs-active {
 	margin-bottom: -1px;
 	padding-bottom: 1px;
@@ -798,12 +801,12 @@ body .ui-tooltip {
 .ui-widget button {
 	font-family: "Gill Sans", sans-serif;
 	font-size: 1em;
-	font-weight: lighter;
+	font-weight: 300;
 }
 .ui-widget-content {
 	border: 1px solid #dfd9c3;
     /* Represent the transition to the next phase of the Ensoft colour banner... */
-    background-image: linear-gradient(to bottom right, #CCFF99, rgb(128, 172, 255));
+    background-image: linear-gradient(to bottom right, #ccff9980, rgba(128, 172, 255, 0.5));
 	color: #312e25;
 }
 .ui-widget-content a {
@@ -813,7 +816,7 @@ body .ui-tooltip {
 	border: 1px solid #d4ccb0;
 	background: #ccff99da 50% 50% repeat-x;
 	color: #433f38;
-	font-weight: lighter;
+	font-weight: 300;
 }
 .ui-widget-header a {
 	color: #433f38;
@@ -824,10 +827,11 @@ body .ui-tooltip {
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #327E04;
-	background: #459e00 url(/static/images/ui-bg_highlight-hard_15_459e00_1x100.png) 50% 50% repeat-x;
-	font-weight: lighter;
-	color: #ffffff;
+	border: 1px solid #d4ccb0;
+	background: #ccff99da 50% 50% repeat-x;
+	color: #749256;
+	font-weight: 300;
+    padding: 3px 8px;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -841,10 +845,11 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #327E04;
-	background: #67b021 url(/static/images/ui-bg_highlight-soft_25_67b021_1x100.png) 50% 50% repeat-x;
-	font-weight: normal;
-	color: #ffffff;
+	border: 1px solid #d4ccb0;
+	background: #ffffffb0 50% 50% repeat-x;
+	color: #749256;
+	font-weight: 300;
+    padding: 3px 8px;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -857,14 +862,15 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
 	border: 1px solid #d4ccb0;
-	background: #fafaf4 url(/static/images/ui-bg_highlight-hard_100_fafaf4_1x100.png) 50% 50% repeat-x;
-	font-weight: normal;
-	color: #459e00;
+	background: #ffffffb0 50% 50% repeat-x;
+	font-weight: 500;
+	color: #749256;
+    padding: 3px 8px;
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-	color: #a0c978;
+	color: #749256;
 	text-decoration: none;
 }
 
@@ -902,14 +908,14 @@ body .ui-tooltip {
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-	font-weight: normal;
+	font-weight: 500;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
 	opacity: .7;
 	filter:Alpha(Opacity=70);
-	font-weight: lighter;
+	font-weight: 300;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
