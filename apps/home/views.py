@@ -30,4 +30,36 @@ class RulesView(TemplateView):
     template_name = "rules.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        context = {
+            "tabs": {
+                "basics": {
+                    "url": "#tabs-basics",
+                    "name": "Basics",
+                },
+                "squad": {
+                    "url": "#tabs-squad",
+                    "name": "Squad",
+                },
+                "points": {
+                    "url": "#tabs-points",
+                    "name": "Scoring Points",
+                },
+                "auction": {
+                    "url": "#tabs-auction",
+                    "name": "Auction",
+                },
+                "sealed": {
+                    "url": "#tabs-sealed",
+                    "name": "Sealed Bids",
+                },
+                "transfers": {
+                    "url": "#tabs-transfers",
+                    "name": "Transfers",
+                },
+                "faq": {
+                    "url": "#tabs-faq",
+                    "name": "FAQ",
+                },
+            },
+        }
+        return render(request, self.template_name, context)
