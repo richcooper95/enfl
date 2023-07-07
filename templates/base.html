@@ -56,16 +56,27 @@
       <div id="leftmenu">
         <a href="{% url 'home' %}"><img src="/static/images/EnFL.png" width="200"></img></a>
         <div id="accordion">
-          {% if main_menu %}
-            {% for name, submenu in main_menu.items %}
-              <h3>{{ name }}</a></h3>
-              <ul>
-                {% for item, url in submenu.items %}
-                  <li><a href="{{ url }}">{{ item }}</a></li>
+          {% if user.is_authenticated %}
+              {% if main_menu %}
+                {% for name, submenu in main_menu.items %}
+                  <h3>{{ name }}</a></h3>
+                  <ul>
+                    {% for item, url in submenu.items %}
+                      <li><a href="{{ url }}">{{ item }}</a></li>
+                    {% endfor %}
+                  </ul>
                 {% endfor %}
-              </ul>
-            {% endfor %}
+              {% endif %}
           {% endif %}
+          <h3>History</a></h3>
+          <ul>
+            <li><a href="{% url 'hall_of_fame' %}">Hall of Fame</a></li>
+            <li><a href="{% url 'positions' %}">Positions</a></li>
+          </ul>
+          <h3>About</a></h3>
+          <ul>
+            <li><a href="{% url 'rules' %}">Rules</a></li>
+          </ul>
         </div>
       </div>
 
@@ -77,9 +88,6 @@
             {% for tab in tabs.values %}
               <li><a href="{{ tab.url }}">{{ tab.name }}</a></li>
             {% endfor %}
-          {% else %}
-            {# tabs is not defined, so we just have one tab named after the page title #}
-            <li><a href="#tabs-1"></a></li>
           {% endif %}
         {% endblock %}
       </ul>
