@@ -20,11 +20,11 @@ from django.urls import include, path
 from apps.home.views import HomeView, HallOfFameView, PositionsView, RulesView
 
 urlpatterns = [
-    path('accounts/', include('django_registration.backends.one_step.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', HomeView.as_view(), name="home"),
-    path('rules/', RulesView.as_view(), name="rules"),
-    path('hall_of_fame/', HallOfFameView.as_view(), name="hall_of_fame"),
-    path('positions/', PositionsView.as_view(), name="positions"),
-    path('admin/', admin.site.urls),
+    path("accounts/", include("django_registration.backends.one_step.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", HomeView.as_view(), name="home"),
+    path("rules/", RulesView.as_view(), name="rules"),
+    path("hall_of_fame/", HallOfFameView.as_view(), name="hall_of_fame"),
+    path("positions/", PositionsView.as_view(), name="positions"),
+    path("admin/", admin.site.urls),
 ]
