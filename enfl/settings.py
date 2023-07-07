@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,8 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
 WSGI_APPLICATION = 'enfl.wsgi.application'
 
 
@@ -77,7 +81,7 @@ WSGI_APPLICATION = 'enfl.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "enfl", # set in compose.yaml
+        "NAME": "enfl_db", # set in compose.yaml
         "USER": "postgres", # set in compose.yaml
         "PASSWORD": "pg-password", # set in db/password.txt
         "HOST": "db",  # set in compose.yaml
@@ -131,3 +135,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
