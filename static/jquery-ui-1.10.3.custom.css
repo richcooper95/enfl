@@ -555,7 +555,7 @@ button.ui-button::-moz-focus-inner {
 	padding: 2px .4em;
 	line-height: 1.5;
 	min-height: 0; /* support: IE7 */
-	font-weight: normal;
+	font-weight: lighter;
 }
 .ui-menu .ui-menu-item a.ui-state-focus,
 .ui-menu .ui-menu-item a.ui-state-active {
@@ -564,7 +564,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-menu .ui-state-disabled {
-	font-weight: normal;
+	font-weight: lighter;
 	margin: .4em 0 .2em;
 	line-height: 1.5;
 }
@@ -786,7 +786,7 @@ body .ui-tooltip {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: segoe ui,Arial,sans-serif;
+	font-family: "Gill Sans", sans-serif;
 	font-size: 1.1em;
 }
 .ui-widget .ui-widget {
@@ -796,12 +796,14 @@ body .ui-tooltip {
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: segoe ui,Arial,sans-serif;
+	font-family: "Gill Sans", sans-serif;
 	font-size: 1em;
+	font-weight: lighter;
 }
 .ui-widget-content {
 	border: 1px solid #dfd9c3;
-	background: #f5f3e5 url(/static/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) 50% top repeat-x;
+    /* Represent the transition to the next phase of the Ensoft colour banner... */
+    background-image: linear-gradient(to bottom right, #CCFF99, rgb(128, 172, 255));
 	color: #312e25;
 }
 .ui-widget-content a {
@@ -809,9 +811,9 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #d4ccb0;
-	background: #ece8da url(/static/images/ui-bg_gloss-wave_100_ece8da_500x100.png) 50% 50% repeat-x;
+	background: #ccff99da 50% 50% repeat-x;
 	color: #433f38;
-	font-weight: bold;
+	font-weight: lighter;
 }
 .ui-widget-header a {
 	color: #433f38;
@@ -824,7 +826,7 @@ body .ui-tooltip {
 .ui-widget-header .ui-state-default {
 	border: 1px solid #327E04;
 	background: #459e00 url(/static/images/ui-bg_highlight-hard_15_459e00_1x100.png) 50% 50% repeat-x;
-	font-weight: bold;
+	font-weight: lighter;
 	color: #ffffff;
 }
 .ui-state-default a,
@@ -841,7 +843,7 @@ body .ui-tooltip {
 .ui-widget-header .ui-state-focus {
 	border: 1px solid #327E04;
 	background: #67b021 url(/static/images/ui-bg_highlight-soft_25_67b021_1x100.png) 50% 50% repeat-x;
-	font-weight: bold;
+	font-weight: normal;
 	color: #ffffff;
 }
 .ui-state-hover a,
@@ -856,13 +858,13 @@ body .ui-tooltip {
 .ui-widget-header .ui-state-active {
 	border: 1px solid #d4ccb0;
 	background: #fafaf4 url(/static/images/ui-bg_highlight-hard_100_fafaf4_1x100.png) 50% 50% repeat-x;
-	font-weight: bold;
+	font-weight: normal;
 	color: #459e00;
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-	color: #459e00;
+	color: #a0c978;
 	text-decoration: none;
 }
 
@@ -900,14 +902,14 @@ body .ui-tooltip {
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-	font-weight: bold;
+	font-weight: normal;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
 	opacity: .7;
 	filter:Alpha(Opacity=70);
-	font-weight: normal;
+	font-weight: lighter;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
