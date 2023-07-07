@@ -1,76 +1,102 @@
 {% load static %}
 <!DOCTYPE html>
-{% autoescape on %}
-<html>
-  <head>
-    {% block head %}
-    <link type="text/css" rel="stylesheet" href="/static/main.css" />
-    <link rel="stylesheet" href="/static/jquery-ui-1.10.3.custom.css" />
-    <script src="/static/javascript/jquery-1.9.1.js"></script>
-    <script src="/static/javascript/jquery-ui-1.10.3.custom.min.js"></script>
-    <script>
-      $(function() {
-        $( "#accordion" ).accordion({heightStyle: "content",
-                                     active: {{ menu_num }}
-                                    });
+  {% autoescape on %}
+  <html>
+    <head>
+      {% block head %}
+      <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" >
+      <link type="text/css" rel="stylesheet" href="/static/main.css" />
+      <link rel="stylesheet" href="/static/jquery-ui-1.10.3.custom.css" />
+      <script src="/static/javascript/jquery-1.9.1.js"></script>
+      <script src="/static/javascript/jquery-ui-1.10.3.custom.min.js"></script>
+      <script>
+        $(function() {
+          $( "#accordion" ).accordion({heightStyle: "content",
+                                      active: "{{ menu_num }}"
+                                      });
+        });
+        $(function() {
+      $( "#tabs" ).tabs({
+        ajaxOptions: {
+          error: function( xhr, status, index, anchor ) {
+            $( anchor.hash ).html(
+              "Failed to load tab contents" );
+          }
+        }
       });
-      $(function() {
-		$( "#tabs" ).tabs({
-			ajaxOptions: {
-				error: function( xhr, status, index, anchor ) {
-					$( anchor.hash ).html(
-						"Failed to load tab contents" );
-				}
-			}
-		});
-	  });
-    </script>
-    <title>{{ title }}</title>
-    {% endblock %}
-  </head>
-  <body>
-    <div id="header">
-        <table align="right">
-            <tr><td><a class="loginurl" href="{{login_url}}">{{login_linktext}}</a></td></tr>
-        </table>
-    </div>
-    <div id="leftmenu">
-        <a href="."><img src="/static/images/EnFL.png" width="200"></img></a>
+      });
+      </script>
+      <title>{% block title %}{% endblock %}</title>
+      {% endblock %}
+    </head>
+
+    <body>
+      <div id="header">
+          {% if not user.is_authenticated %}
+            <table align="right">
+              <tr>
+                <td><a class="loginurl" href="{% url 'login' %}">Log in</a></td>
+                <td><a class="registerurl" href="{% url 'django_registration_register' %}">Sign up</a></td>
+              </tr>
+            </table>
+          {% else %}
+            <table align="left">
+              <tr>
+                <td><a class="username">Logged in as {{ user }}</a></td>
+              </tr>
+            </table>
+            <table align="right">
+              <tr>
+                <td><a class="logouturl" href="{% url 'logout' %}">Log out</a></td>
+              </tr>
+            </table>
+          {% endif %}
+      </div>
+
+      <div id="leftmenu">
+        <a href="{% url 'home' %}"><img src="/static/images/EnFL.png" width="200"></img></a>
         <div id="accordion">
-        {% for name, submenu in main_menu.items %}
-            <h3>{{ name }}</a></h3>
-            <ul>
+          {% if main_menu %}
+            {% for name, submenu in main_menu.items %}
+              <h3>{{ name }}</a></h3>
+              <ul>
                 {% for item, url in submenu.items %}
-                <li><a href={{ url }}>{{ item }}</a></li>
+                  <li><a href="{{ url }}">{{ item }}</a></li>
                 {% endfor %}
-            </ul>
-        {% endfor %}
-        </div>
-    </div>
-    <div id="content"><div id="tabs" style="overflow:hidden;">
-	<ul>
-        {% block tabnames %}
-		{% if tabs is defined %}
-            {% for tab in tabs.values %}
-                <li><a href="{{ tab.url }}">{{ tab.name }}</a></li>
+              </ul>
             {% endfor %}
-        {% else %}
-            <li><a href="#tabs-1">{{ title }}</a></li>
-        {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div id="content"><div id="tabs" style="overflow:hidden;">
+      <ul>
+        {% block tabnames %}
+          {% if tabs %}
+            {# tabs is a dictionary of tab names and urls #}
+            {% for tab in tabs.values %}
+              <li><a href="{{ tab.url }}">{{ tab.name }}</a></li>
+            {% endfor %}
+          {% else %}
+            {# tabs is not defined, so we just have one tab named after the page title #}
+            <li><a href="#tabs-1"></a></li>
+          {% endif %}
         {% endblock %}
-	</ul>
-    {% block tabs %}
-	<div id="tabs-1" class="fftab">
-        {% block defaulttab %}
+      </ul>
+
+      {% block tabs %}
+        <div id="tabs-1" class="fftab">
+          {% block defaulttab %}{% endblock %}
+        </div>
+      {% endblock %}
+
+      </div></div>
+
+      <div id="footer">
+        {% block footer %}
+          <small>© 2014 by Jon Culver and 2023 by Rich Barton-Cooper</small>
         {% endblock %}
-	</div>
-    {% endblock %}
-    </div></div>
-    <div id="footer">
-    {% block footer %}
-      <font color=grey size=small>Copyright 2014 by Jon Culver (and 2023 by Rich Barton-Cooper)</font>
-    {% endblock %}
-    </div>
-  </body>
-</html>
+      </div>
+    </body>
+  </html>
 {% endautoescape %}

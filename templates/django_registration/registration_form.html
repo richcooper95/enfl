@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Enfl - Register{% endblock %}
+
+{% load i18n %}
+
+{% block defaulttab %}
+  <form method="post" action=".">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <br><small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: LightCoral">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+
+    <input class="button" type="submit" value="{% trans 'Register' %}" />
+  </form>
+{% endblock %}
