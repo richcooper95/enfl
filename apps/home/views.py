@@ -1,6 +1,12 @@
+from typing import Dict, List, Tuple
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView
+
+
+def get_tabs(tabs: List[Tuple[str, str]]) -> Dict[str, Dict[str, str]]:
+    return {k: {"url": f"#tabs-{k}", "name": v} for k, v in tabs}
 
 
 # Create your views here.
@@ -10,14 +16,7 @@ class HomeView(TemplateView):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
-        context = {
-            "tabs": {
-                k: {"url": f"#tabs-{k}", "name": v}
-                for k, v in [
-                    ("home", "Home"),
-                ]
-            }
-        }
+        context = {"tabs": get_tabs([("home", "Home")])}
 
         return render(request, self.template_name, context)
 
@@ -28,14 +27,7 @@ class HallOfFameView(LoginRequiredMixin, TemplateView):
     template_name = "hall_of_fame.html"
 
     def get(self, request, *args, **kwargs):
-        context = {
-            "tabs": {
-                k: {"url": f"#tabs-{k}", "name": v}
-                for k, v in [
-                    ("winners", "Hall of Fame"),
-                ]
-            }
-        }
+        context = {"tabs": get_tabs([("winners", "Hall of Fame")])}
 
         return render(request, self.template_name, context)
 
@@ -46,14 +38,7 @@ class PositionsView(LoginRequiredMixin, TemplateView):
     template_name = "positions.html"
 
     def get(self, request, *args, **kwargs):
-        context = {
-            "tabs": {
-                k: {"url": f"#tabs-{k}", "name": v}
-                for k, v in [
-                    ("final-positions", "Positions"),
-                ]
-            }
-        }
+        context = {"tabs": get_tabs([("final-positions", "Positions")])}
 
         return render(request, self.template_name, context)
 
@@ -65,9 +50,8 @@ class RulesView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = {
-            "tabs": {
-                k: {"url": f"#tabs-{k}", "name": v}
-                for k, v in [
+            "tabs": get_tabs(
+                [
                     ("basics", "Basics"),
                     ("squad", "Squad"),
                     ("points", "Scoring Points"),
@@ -76,7 +60,7 @@ class RulesView(TemplateView):
                     ("transfers", "Transfers"),
                     ("faq", "FAQ"),
                 ]
-            }
+            )
         }
 
         return render(request, self.template_name, context)
