@@ -40,10 +40,6 @@ pre {
 }
 
 .fftab, .ui-tabs-panel {
-  /* Tried all 4 Ensoft colours, but it looked shit... */
-  /* background-image: linear-gradient(to bottom, #CCFF99, rgb(128, 172, 255), #ffb56b, #ff7f7f); */
-  /* ...so instead go for the transition to the next phase of the Ensoft colour banner */
-  background-image: linear-gradient(to bottom, #ccff9980, rgba(128, 172, 255, 0.5));
   min-height: 600px;
   font-family: "Gill Sans", sans-serif !important;
   font-weight: 300;

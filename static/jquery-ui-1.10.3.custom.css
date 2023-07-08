@@ -805,7 +805,9 @@ body .ui-tooltip {
 }
 .ui-widget-content {
 	border: 1px solid #dfd9c3;
-    /* Represent the transition to the next phase of the Ensoft colour banner... */
+    /* Tried all 4 Ensoft colours, but it looked shit... */
+    /* background-image: linear-gradient(to bottom, #ccff9980, rgb(128, 172, 255), #ffb56b, #ff7f7f); */
+    /* ...so instead go for the transition to the next phase of the Ensoft colour banner */
     background-image: linear-gradient(to bottom, #ccff9980, rgba(128, 172, 255, 0.5));
 	color: #312e25;
 }
