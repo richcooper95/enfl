@@ -32,25 +32,19 @@
 
     <body>
       <div id="header">
+        <table align="right">
           {% if not user.is_authenticated %}
-            <table align="right">
-              <tr>
-                <td><a class="loginurl" href="{% url 'login' %}">Log in</a></td>
-                <td><a class="registerurl" href="{% url 'django_registration_register' %}">Sign up</a></td>
-              </tr>
-            </table>
+            <tr>
+              <td><a class="loginurl" href="{% url 'login' %}">Log in</a></td>
+              <td><a class="registerurl" href="{% url 'django_registration_register' %}">Sign up</a></td>
+            </tr>
           {% else %}
-            <table align="left">
-              <tr>
-                <td><a class="username">Logged in as {{ user }}</a></td>
-              </tr>
-            </table>
-            <table align="right">
-              <tr>
-                <td><a class="logouturl" href="{% url 'logout' %}">Log out</a></td>
-              </tr>
-            </table>
+            <tr>
+              <td><a class="username">Hello, {{ user }}. </a></td>
+              <td><a class="logouturl" href="{% url 'logout' %}">Log out</a></td>
+            </tr>
           {% endif %}
+        </table>
       </div>
 
       <div id="leftmenu">
