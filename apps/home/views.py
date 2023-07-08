@@ -10,7 +10,16 @@ class HomeView(TemplateView):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        context = {
+            "tabs": {
+                k: {"url": f"#tabs-{k}", "name": v}
+                for k, v in [
+                    ("home", "Home"),
+                ]
+            }
+        }
+
+        return render(request, self.template_name, context)
 
 
 class HallOfFameView(LoginRequiredMixin, TemplateView):
@@ -19,7 +28,16 @@ class HallOfFameView(LoginRequiredMixin, TemplateView):
     template_name = "hall_of_fame.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        context = {
+            "tabs": {
+                k: {"url": f"#tabs-{k}", "name": v}
+                for k, v in [
+                    ("winners", "Hall of Fame"),
+                ]
+            }
+        }
+
+        return render(request, self.template_name, context)
 
 
 class PositionsView(LoginRequiredMixin, TemplateView):
@@ -28,7 +46,16 @@ class PositionsView(LoginRequiredMixin, TemplateView):
     template_name = "positions.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {})
+        context = {
+            "tabs": {
+                k: {"url": f"#tabs-{k}", "name": v}
+                for k, v in [
+                    ("final-positions", "Positions"),
+                ]
+            }
+        }
+
+        return render(request, self.template_name, context)
 
 
 class RulesView(TemplateView):
