@@ -42,29 +42,6 @@ class ToolsTab(Tab):
 
 
 class FFPage(TemplateView):
-    def user_setup(self):
-        """
-        Set values relating to the current user
-        """
-        self.user = users.get_current_user()
-        if not hasattr(self, "admin"):
-            # Admin may already be set in some cases
-            self.admin = False
-        if not hasattr(self, "request") or self.request is None:
-            # Not a request so fill in empty strings.
-            self.login_url = ""
-            self.login_linktext = ""
-        elif self.user != None:
-            # A user is logged in so create personalised logout url
-            self.login_url = users.create_logout_url(self.request.uri)
-            self.login_linktext = "Logout {}".format(self.user.nickname())
-            if not self.admin:
-                self.admin = users.is_current_user_admin()
-        else:
-            # No user logged in so create a login url
-            self.login_url = users.create_login_url(self.request.uri)
-            self.login_linktext = "Login"
-
     def common_setup(self, menu_num=0, year=None, league=None, populate_teams=False):
         """
         Common setup for all HTML pages on the site, including filling in
@@ -219,6 +196,7 @@ class FFPage(TemplateView):
         self.set_value("tabs", self.tabs)
 
 
+# @RBC - this is redundant now
 class MainPage(FFPage):
     def get(self):
         super(MainPage, self).get()
@@ -244,6 +222,7 @@ class Rules(FFPage):
         self.render("rules.html")
 
 
+# @RBC - this is redundant now
 class History(FFPage):
     """
     Past Winners etc.
